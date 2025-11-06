@@ -62,18 +62,16 @@ Classify products as Low, Medium, or Bulk based on total weight.
 8️⃣ Total Inventory Weight per Category
 Calculate overall inventory weight distribution across categories.
 
-💡 Insights & Observations
+
+## 💡 Insights & Observations
 
 Certain categories offer high discounts, driving better customer value.
-
 Out-of-stock premium items highlight potential restocking priorities.
-
 Revenue contribution varies heavily across product categories.
-
 Bulk products tend to have lower price-per-gram ratios, indicating better pricing efficiency.
 
 
 
-👩‍💻 Author
+## 👩‍💻 Author
 Bansi Shah
 
