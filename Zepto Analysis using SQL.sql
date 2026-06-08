@@ -151,3 +151,23 @@ join category_avg_price c
 on z.category = c.category
 where z.mrp > c.avg_mrp
 order by z.category, z.mrp DESC;
+
+-- Q11. Find the Top 3 Most Expensive Products in Each Category
+with ranked_products AS (
+    select
+        category,
+        name,
+        mrp,
+        RANK() OVER (
+            PARTITION BY category
+            order by mrp DESC
+        ) AS price_rank
+    from zepto_v2)
+Select
+    category,
+    name,
+    mrp,
+    price_rank
+from ranked_products
+where price_rank <= 3
+order by category, price_rank;
