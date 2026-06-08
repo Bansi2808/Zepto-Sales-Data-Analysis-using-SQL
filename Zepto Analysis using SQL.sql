@@ -123,4 +123,31 @@ from zepto_v2
 Group by category
 order by total_weight;
 
+-- Q9.Identify the Top 5 Revenue-Generating Categories and Their Contribution to Total Revenue
+With category_revenue AS (
+    Select category,
+           SUM(discountedSellingPrice * availableQuantity) AS revenue
+    from zepto_v2
+    group by category)
+Select *
+from category_revenue
+order by revenue DESC
+limit 5;
 
+-- Q10.Find Products Priced Above Their Category Average MRP
+with category_avg_price AS (
+    select
+        category,
+        AVG(mrp) AS avg_mrp
+    from zepto_v2
+    group by category)
+select
+    z.category,
+    z.name,
+    z.mrp,
+    c.avg_mrp
+from zepto_v2 z
+join category_avg_price c
+on z.category = c.category
+where z.mrp > c.avg_mrp
+order by z.category, z.mrp DESC;
